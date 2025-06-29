@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ name }}のポートフォリオ</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <h1>{{ name }} のポートフォリオ</h1>
+    <p><strong>自己紹介:</strong> {{ bio }}</p>
+    <h2>スキル</h2>
+    <ul>
+      {% for skill in skills %}
+      <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

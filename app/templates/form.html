@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ポートフォリオ作成フォーム</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <h1>ポートフォリオ作成</h1>
+    <form action="/generate" method="post">
+      <label>名前: <input type="text" name="name" required /></label><br />
+      <label>自己紹介: <textarea name="bio" required></textarea></label><br />
+      <label
+        >スキル（カンマ区切り）:
+        <input type="text" name="skills" required /></label
+      ><br />
+      <button type="submit">生成</button>
+    </form>
+  </body>
+</html>
