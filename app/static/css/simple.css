@@ -1,0 +1,104 @@
+/* ===== ベーススタイル ===== */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== コンテナ ===== */
+body > * {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== ヘッダー ===== */
+header {
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* ===== セクション ===== */
+section {
+  margin-top: 2rem;
+}
+
+section h2 {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 1rem;
+  border-left: 6px solid #4f46e5;
+  padding-left: 0.75rem;
+}
+
+section p,
+section li {
+  font-size: 1rem;
+  color: #444;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== スキルの星表示 ===== */
+li::marker {
+  color: #4f46e5;
+  font-weight: bold;
+}
+
+/* ===== リンク ===== */
+a {
+  color: #4f46e5;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== アイコン付きリスト ===== */
+section ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ===== レスポンシブ対応 ===== */
+@media (max-width: 600px) {
+  body > * {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  section h2 {
+    font-size: 1.25rem;
+  }
+}

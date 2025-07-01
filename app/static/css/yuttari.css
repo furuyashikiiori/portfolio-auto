@@ -1,0 +1,117 @@
+/* ===== ベーススタイル ===== */
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  background-color: #fefefe;
+  color: #444;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== コンテナ ===== */
+body > * {
+  max-width: 860px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== ヘッダー ===== */
+header {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+/* ===== セクション ===== */
+section {
+  margin-top: 2.5rem;
+}
+
+section h2 {
+  font-size: 1.6rem;
+  color: #2c2c2c;
+  margin-bottom: 1.2rem;
+  border-left: 6px solid #a5d8ff;
+  background-color: #f1f8ff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+/* ===== リストや段落 ===== */
+section p,
+section li {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+li {
+  margin-bottom: 0.75rem;
+}
+
+/* ===== スキルの星表示 ===== */
+li::marker {
+  color: #90caf9;
+}
+
+/* ===== リンク ===== */
+a {
+  color: #4f86e0;
+  text-decoration: none;
+  border-bottom: 1px dashed #a5c7f2;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  border-bottom-style: solid;
+  color: #3b5bdb;
+}
+
+/* ===== コンタクト用アイコン付きリスト ===== */
+section ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  word-break: break-word;
+}
+
+/* ===== レスポンシブ対応 ===== */
+@media (max-width: 600px) {
+  body > * {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  section h2 {
+    font-size: 1.3rem;
+  }
+
+  section p,
+  section li {
+    font-size: 1rem;
+  }
+}
