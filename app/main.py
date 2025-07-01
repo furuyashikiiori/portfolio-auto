@@ -20,10 +20,11 @@ async def generate_portfolio(
     name: str = Form(...),
     bio: str = Form(...),
     skills: str = Form(...),
+    template: str = Form(...),
 ):
     skills_list = [s.strip() for s in skills.split(",")]
     return templates.TemplateResponse(
-        "portfolio.html",
+        f"portfolio_{template}.html",
         {
             "request": request,
             "name": name,
