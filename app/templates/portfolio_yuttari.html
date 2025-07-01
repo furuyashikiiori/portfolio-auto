@@ -8,6 +8,9 @@
   <body>
     <!-- ===== ヘッダー ===== -->
     <header>
+      {% if icon_path %}
+      <img src="{{ icon_path }}" alt="{{ name }}のアイコン" class="profile-icon" />
+      {% endif %}
       <h1>ゆったりな{{ name }} のポートフォリオ</h1>
       {% if title %}
       <p><em>{{ title }}</em></p>
