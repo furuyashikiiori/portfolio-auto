@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <title>ポートフォリオ作成フォーム</title>
@@ -7,14 +7,80 @@
   </head>
   <body>
     <h1>ポートフォリオ作成</h1>
+
     <form action="/generate" method="post">
+      <!-- ─── 必須 ─── -->
       <label>名前: <input type="text" name="name" required /></label><br />
-      <label>自己紹介: <textarea name="bio" required></textarea></label><br />
-      <label
-        >スキル（カンマ区切り）:
-        <input type="text" name="skills" required /></label
-      ><br />
+
+      <label>大学・学部名: <input type="text" name="university" required /></label><br />
+
+      <label>学年: <input type="text" name="year" required placeholder="例）3年" /></label><br />
+
+      <label>卒業予定年: <input type="text" name="graduation_year" required /></label><br />
+
+      <label>自己PR: <textarea name="self_intro" required></textarea></label><br />
+
+      <!-- ─── スキル ─── -->
+      <h2>スキル</h2>
+      <div id="skills-container"></div>
+
+      <!-- 行テンプレート（非表示） -->
+      <template id="skill-row-template">
+        <div class="skill-row">
+          <input
+            type="text"
+            name="skill_name"
+            required
+            class="skill-input"
+            placeholder="例）Python"
+          />
+          <select name="skill_level" required>
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3" selected>★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button type="button" class="delete-btn">−</button>
+        </div>
+      </template>
+
+      <button type="button" id="add-skill-btn">＋ スキルを追加</button><br /><br />
+
+      <!-- ─── 任意 ─── -->
+      <fieldset>
+        <legend>任意情報</legend>
+
+        <label>肩書き: <input type="text" name="title" /></label><br />
+
+        <label>実績: <textarea name="achievements"></textarea></label><br />
+
+        <label>資格: <textarea name="certifications"></textarea></label><br />
+
+        <label>
+          成果物の説明（複数行可）:<br />
+          <textarea name="projects" rows="4"></textarea>
+        </label><br />
+
+        <label>
+          成果物リンク（カンマ区切り）:<br />
+          <textarea name="project_links" rows="2"></textarea>
+        </label><br />
+
+        <label>メール: <input type="email" name="contact_email" /></label><br />
+
+        <label>
+          SNS リンク（カンマ区切り）:
+          <textarea name="contact_sns" rows="2"></textarea>
+        </label><br />
+
+        <label>GitHub: <input type="url" name="contact_github" /></label><br />
+      </fieldset>
+
       <button type="submit">生成</button>
     </form>
+
+    <!-- ★ 外部 JS を読み込み -->
+    <script src="/static/js/script.js"></script>
   </body>
 </html>
