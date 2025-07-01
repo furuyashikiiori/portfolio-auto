@@ -24,8 +24,6 @@ async def generate_portfolio(
     request: Request,
     # ─────────── 必須 ───────────
     name: str = Form(...),
-    bio: str = Form(...),
-    skills: str = Form(...),
     template: str = Form(...),
     university: str = Form(...),
     year: str = Form(...),
