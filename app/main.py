@@ -24,6 +24,9 @@ async def generate_portfolio(
     request: Request,
     # ─────────── 必須 ───────────
     name: str = Form(...),
+    bio: str = Form(...),
+    skills: str = Form(...),
+    template: str = Form(...),
     university: str = Form(...),
     year: str = Form(...),
     graduation_year: str = Form(...),
@@ -53,7 +56,7 @@ async def generate_portfolio(
     proj_links = [l.strip() for l in project_links.split(",")] if project_links else []
 
     return templates.TemplateResponse(
-        "portfolio.html",
+        f"portfolio_{template}.html",
         {
             "request": request,
             # 必須
