@@ -8,7 +8,7 @@
   <body>
     <h1>ポートフォリオ作成</h1>
 
-    <form action="/generate" method="post">
+    <form action="/generate" method="post" enctype="multipart/form-data">
       <!-- ─── 必須 ─── -->
       <label>名前: <input type="text" name="name" required /></label><br />
 
@@ -28,6 +28,8 @@
 
       <label>自己PR: <textarea name="self_intro" required></textarea></label
       ><br />
+
+      <label>アイコン画像: <input type="file" name="icon_image" accept="image/*" /></label><br />
 
       <!-- ─── スキル ─── -->
       <h2>スキル</h2>
