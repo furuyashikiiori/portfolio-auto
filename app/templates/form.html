@@ -11,19 +11,23 @@
     <form action="/generate" method="post">
       <!-- ─── 必須 ─── -->
       <label>名前: <input type="text" name="name" required /></label><br />
-      <label>自己紹介: <textarea name="bio" required></textarea></label><br />
+
       <label
-        >スキル（カンマ区切り）:
-        <input type="text" name="skills" required /></label
+        >大学・学部名: <input type="text" name="university" required /></label
       ><br />
 
-      <label>大学・学部名: <input type="text" name="university" required /></label><br />
+      <label
+        >学年:
+        <input type="text" name="year" required placeholder="例）3年" /></label
+      ><br />
 
-      <label>学年: <input type="text" name="year" required placeholder="例）3年" /></label><br />
+      <label
+        >卒業予定年:
+        <input type="text" name="graduation_year" required /></label
+      ><br />
 
-      <label>卒業予定年: <input type="text" name="graduation_year" required /></label><br />
-
-      <label>自己PR: <textarea name="self_intro" required></textarea></label><br />
+      <label>自己PR: <textarea name="self_intro" required></textarea></label
+      ><br />
 
       <!-- ─── スキル ─── -->
       <h2>スキル</h2>
@@ -50,7 +54,8 @@
         </div>
       </template>
 
-      <button type="button" id="add-skill-btn">＋ スキルを追加</button><br /><br />
+      <button type="button" id="add-skill-btn">＋ スキルを追加</button
+      ><br /><br />
 
       <!-- ─── 任意 ─── -->
       <fieldset>
@@ -64,24 +69,24 @@
 
         <label>
           成果物の説明（複数行可）:<br />
-          <textarea name="projects" rows="4"></textarea>
-        </label><br />
+          <textarea name="projects" rows="4"></textarea></label
+        ><br />
 
         <label>
           成果物リンク（カンマ区切り）:<br />
-          <textarea name="project_links" rows="2"></textarea>
-        </label><br />
+          <textarea name="project_links" rows="2"></textarea></label
+        ><br />
 
         <label>メール: <input type="email" name="contact_email" /></label><br />
 
         <label>
           SNS リンク（カンマ区切り）:
-          <textarea name="contact_sns" rows="2"></textarea>
-        </label><br />
+          <textarea name="contact_sns" rows="2"></textarea></label
+        ><br />
 
         <label>GitHub: <input type="url" name="contact_github" /></label><br />
       </fieldset>
-      
+
       <br />
       <label for="template-select">Choose a template:</label>
       <select name="template" id="template-select">
