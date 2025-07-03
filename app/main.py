@@ -43,8 +43,11 @@ async def generate_portfolio(
     title: Optional[str] = Form(None),
     achievements: Optional[str] = Form(None),
     certifications: Optional[str] = Form(None),
-    projects: Optional[str] = Form(None),
-    project_links: Optional[str] = Form(None),
+    # 制作物（複数行）― 同名フィールドを配列で受け取る
+    project_title: List[str] = Form(...),
+    project_description: List[str] = Form(...),
+    project_tech: List[str] = Form(...),
+    project_url: List[str] = Form([]),
     contact_email: Optional[str] = Form(None),
     contact_sns: Optional[str] = Form(None),
     contact_github: Optional[str] = Form(None),
@@ -58,9 +61,20 @@ async def generate_portfolio(
         if n.strip()
     ]
 
+    # 制作物 [{title, description, tech, url}, …] を生成
+    projects_data = []
+    for i in range(len(project_title)):
+        if i < len(project_title) and project_title[i].strip():
+            project_data = {
+                "title": project_title[i].strip(),
+                "description": project_description[i].strip() if i < len(project_description) else "",
+                "tech": [t.strip() for t in project_tech[i].split(",") if t.strip()] if i < len(project_tech) else [],
+                "url": project_url[i].strip() if i < len(project_url) and project_url[i].strip() else None
+            }
+            projects_data.append(project_data)
+
     # 任意フィールドの整形
     sns_links = [s.strip() for s in contact_sns.split(",")] if contact_sns else []
-    proj_links = [l.strip() for l in project_links.split(",")] if project_links else []
 
     # アイコン画像の処理
     icon_path = None
@@ -98,8 +112,7 @@ async def generate_portfolio(
             "title": title,
             "achievements": achievements,
             "certifications": certifications,
-            "projects": projects.splitlines() if projects else [],
-            "proj_links": proj_links,
+            "projects": projects_data,
             "contact_email": contact_email,
             "sns_links": sns_links,
             "contact_github": contact_github,
