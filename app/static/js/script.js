@@ -1,21 +1,42 @@
 // 最初のスキル行を 1 行生成
-window.addEventListener("DOMContentLoaded", () => addSkillRow());
+window.addEventListener("DOMContentLoaded", () => {
+  addSkillRow();
+  addProjectRow();
+});
 
-const tmpl = document.getElementById("skill-row-template");
-const container = document.getElementById("skills-container");
-const addBtn = document.getElementById("add-skill-btn");
+const skillTmpl = document.getElementById("skill-row-template");
+const skillContainer = document.getElementById("skills-container");
+const addSkillBtn = document.getElementById("add-skill-btn");
 
-addBtn.addEventListener("click", () => addSkillRow());
+const projectTmpl = document.getElementById("project-row-template");
+const projectContainer = document.getElementById("projects-container");
+const addProjectBtn = document.getElementById("add-project-btn");
+
+addSkillBtn.addEventListener("click", () => addSkillRow());
+addProjectBtn.addEventListener("click", () => addProjectRow());
 
 function addSkillRow() {
-  const clone = tmpl.content.firstElementChild.cloneNode(true);
+  const clone = skillTmpl.content.firstElementChild.cloneNode(true);
 
   // 削除ボタン設定
   clone.querySelector(".delete-btn").onclick = () => {
-    if (container.children.length > 1) {
+    if (skillContainer.children.length > 1) {
       clone.remove();
     }
   };
 
-  container.appendChild(clone);
+  skillContainer.appendChild(clone);
+}
+
+function addProjectRow() {
+  const clone = projectTmpl.content.firstElementChild.cloneNode(true);
+
+  // 削除ボタン設定
+  clone.querySelector(".delete-btn").onclick = () => {
+    if (projectContainer.children.length > 1) {
+      clone.remove();
+    }
+  };
+
+  projectContainer.appendChild(clone);
 }

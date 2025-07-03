@@ -1,95 +1,142 @@
 <!DOCTYPE html>
 <html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ポートフォリオ作成フォーム</title>
+    <link rel="stylesheet" href="/static/css/form.css" />
+  </head>
+  <body>
+    <h1>ポートフォリオ作成</h1>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>ポートフォリオ作成フォーム</title>
-  <link rel="stylesheet" href="/static/css/style.css" />
-</head>
+    <form action="/generate" method="post" enctype="multipart/form-data">
+      <!-- ─── 必須 ─── -->
+      <label>名前: <input type="text" name="name" required /></label><br />
 
-<body>
-  <h1>ポートフォリオ作成</h1>
+      <label
+        >大学・学部名: <input type="text" name="university" required /></label
+      ><br />
 
-  <form action="/generate" method="post" enctype="multipart/form-data">
-    <!-- ─── 必須 ─── -->
-    <label>名前: <input type="text" name="name" required /></label><br />
+      <label
+        >学年:
+        <input type="text" name="year" required placeholder="例）3年" /></label
+      ><br />
 
-    <label>大学・学部名: <input type="text" name="university" required /></label><br />
+      <label
+        >卒業予定年:
+        <input type="text" name="graduation_year" required /></label
+      ><br />
 
-    <label>学年:
-      <input type="text" name="year" required placeholder="例）3年" /></label><br />
+      <label>自己PR: <textarea name="self_intro" required></textarea></label
+      ><br />
 
-    <label>卒業予定年:
-      <input type="text" name="graduation_year" required /></label><br />
+      <label
+        >アイコン画像:
+        <input type="file" name="icon_image" accept="image/*" /></label
+      ><br />
 
-    <label>自己PR: <textarea name="self_intro" required></textarea></label><br />
+      <!-- ─── スキル ─── -->
+      <h2>スキル</h2>
+      <div id="skills-container"></div>
 
-    <label>アイコン画像:
-      <input type="file" name="icon_image" accept="image/*" /></label><br />
+      <!-- 行テンプレート（非表示） -->
+      <template id="skill-row-template">
+        <div class="skill-row">
+          <input
+            type="text"
+            name="skill_name"
+            required
+            class="skill-input"
+            placeholder="例）Python"
+          />
+          <select name="skill_level" required>
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3" selected>★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button type="button" class="delete-btn">−</button>
+        </div>
+      </template>
 
-    <!-- ─── スキル ─── -->
-    <h2>スキル</h2>
-    <div id="skills-container"></div>
+      <button type="button" id="add-skill-btn">＋ スキルを追加</button
+      ><br /><br />
 
-    <!-- 行テンプレート（非表示） -->
-    <template id="skill-row-template">
-      <div class="skill-row">
-        <input type="text" name="skill_name" required class="skill-input" placeholder="例）Python" />
-        <select name="skill_level" required>
-          <option value="1">★☆☆☆☆</option>
-          <option value="2">★★☆☆☆</option>
-          <option value="3" selected>★★★☆☆</option>
-          <option value="4">★★★★☆</option>
-          <option value="5">★★★★★</option>
-        </select>
-        <button type="button" class="delete-btn">−</button>
-      </div>
-    </template>
+      <!-- ─── 任意 ─── -->
+      <fieldset>
+        <legend>任意情報</legend>
 
-    <button type="button" id="add-skill-btn">＋ スキルを追加</button><br /><br />
+        <label>肩書き: <input type="text" name="title" /></label><br />
 
-    <!-- ─── 任意 ─── -->
-    <fieldset>
-      <legend>任意情報</legend>
+        <label>実績: <textarea name="achievements"></textarea></label><br />
 
-      <label>肩書き: <input type="text" name="title" /></label><br />
+        <label>資格: <textarea name="certifications"></textarea></label><br />
 
-      <label>実績: <textarea name="achievements"></textarea></label><br />
+        <!-- ─── 制作物 ─── -->
+        <h3>制作物</h3>
+        <div id="projects-container"></div>
 
-      <label>資格: <textarea name="certifications"></textarea></label><br />
+        <!-- 制作物テンプレート（非表示） -->
+        <template id="project-row-template">
+          <div class="project-row">
+            <input
+              type="text"
+              name="project_title"
+              required
+              class="project-input"
+              placeholder="タイトル"
+            />
+            <textarea
+              name="project_description"
+              required
+              class="project-textarea"
+              placeholder="概要"
+              rows="2"
+            ></textarea>
+            <input
+              type="text"
+              name="project_tech"
+              required
+              class="project-input"
+              placeholder="技術スタック（カンマ区切り）"
+            />
+            <input
+              type="url"
+              name="project_url"
+              class="project-input"
+              placeholder="URL（任意）"
+            />
+            <button type="button" class="delete-btn">−</button>
+          </div>
+        </template>
 
-      <label>
-        成果物の説明（複数行可）:<br />
-        <textarea name="projects" rows="4"></textarea></label><br />
+        <button type="button" id="add-project-btn">＋ 制作物を追加</button
+        ><br /><br />
 
-      <label>
-        成果物リンク（カンマ区切り）:<br />
-        <textarea name="project_links" rows="2"></textarea></label><br />
+        <label>メール: <input type="email" name="contact_email" /></label><br />
 
-      <label>メール: <input type="email" name="contact_email" /></label><br />
+        <label>
+          SNS リンク（カンマ区切り）:
+          <textarea name="contact_sns" rows="2"></textarea></label
+        ><br />
 
-      <label>
-        SNS リンク（カンマ区切り）:
-        <textarea name="contact_sns" rows="2"></textarea></label><br />
+        <label>GitHub: <input type="url" name="contact_github" /></label><br />
+      </fieldset>
 
-      <label>GitHub: <input type="url" name="contact_github" /></label><br />
-    </fieldset>
+      <br />
+      <label for="template-select">Choose a template:</label>
+      <select name="template" id="template-select">
+        <option value="">--Please choose an option--</option>
+        <option value="simple">シンプル</option>
+        <option value="yuttari">ゆったり</option>
+        <option value="cool">クール</option>
+        <option value="koukyuu">高級</option>
+      </select>
 
-    <br />
-    <label for="template-select">Choose a template:</label>
-    <select name="template" id="template-select">
-      <option value="">--Please choose an option--</option>
-      <option value="simple">シンプル</option>
-      <option value="yuttari">ゆったり</option>
-      <option value="cool">クール</option>
-      <option value="koukyuu">高級</option>
-    </select>
+      <button type="submit">生成</button>
+    </form>
 
-    <button type="submit">生成</button>
-  </form>
-
-  <!-- ★ 外部 JS を読み込み -->
-  <script src="/static/js/script.js"></script>
-</body>
-
+    <!-- ★ 外部 JS を読み込み -->
+    <script src="/static/js/script.js"></script>
+  </body>
 </html>
