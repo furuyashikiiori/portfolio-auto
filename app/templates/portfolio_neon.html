@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>{{ name }} のポートフォリオ</title>
-    <link rel="stylesheet" href="/static/css/neon.css" />
+    <link rel="stylesheet"  href="/static/css/neon.css"/>
   </head>
   <body>
     <!-- ===== ヘッダー ===== -->
     <header>
+      <h1>{{ name }} のポートフォリオ</h1>
       {% if icon_path %}
       <img src="{{ icon_path }}" alt="{{ name }}のアイコン" class="profile-icon" />
       {% endif %}
-      <h1>ネオンな{{ name }} のポートフォリオ</h1>
       {% if title %}
       <p><em>{{ title }}</em></p>
       {% endif %}
@@ -20,9 +20,12 @@
     <!-- ===== プロフィール ===== -->
     <section>
       <h2>プロフィール</h2>
-      <p><strong>所属:</strong> {{ university }} / {{ year }}</p>
-      <p><strong>卒業予定:</strong> {{ graduation_year }}年</p>
-      <p><strong>自己紹介:</strong> {{ self_intro }}</p>
+      <h3><strong>所属</strong></h3>
+      <p>{{ university }} / {{ year }}</p>
+      <h3><strong>卒業予定</strong></h3>
+      <p>{{ graduation_year }}年</p>
+      <h3><strong>自己紹介</strong></h3>
+      <p>{{ self_intro }}</p>
     </section>
 
     <!-- ===== スキル ===== -->
