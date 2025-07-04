@@ -47,28 +47,22 @@
     </section>
     {% endif %}
 
-    <!-- ===== 成果物 ===== -->
-    {% if projects or proj_links %}
+    <!-- ===== 制作物 ===== -->
+    {% if projects %}
     <section>
-      <h2>成果物</h2>
-      {% if projects %}
-      <ul>
-        {% for p in projects %}
-        <li>{{ p }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% if proj_links %}
-      <p>リンク:</p>
-      <ul>
-        {% for link in proj_links %}
-        <li>
-          <a href="{{ link }}" target="_blank" rel="noopener noreferrer">
-            {{ link }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      <h2>制作物</h2>
+      {% for project in projects %}
+      <div class="project">
+        <h3>{{ project.title }}</h3>
+        <p><strong>概要:</strong> {{ project.description }}</p>
+        {% if project.tech %}
+        <p><strong>技術スタック:</strong> {{ project.tech|join(', ') }}</p>
+        {% endif %}
+        {% if project.url %}
+        <p><strong>URL:</strong> <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.url }}</a></p>
+        {% endif %}
+      </div>
+      {% endfor %}
     </section>
     {% endif %}
 

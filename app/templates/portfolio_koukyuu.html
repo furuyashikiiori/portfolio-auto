@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>{{ name }} のポートフォリオ</title>
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/koukyuu.css" />
   </head>
+
   <body>
     <!-- ===== ヘッダー ===== -->
     <header>
@@ -47,7 +48,7 @@
     <!-- ===== 成果物 ===== -->
     {% if projects %}
     <section>
-      <h2>制作物</h2>
+      <h2>成果物</h2>
       {% for project in projects %}
       <div class="project">
         <h3>{{ project.title }}</h3>
