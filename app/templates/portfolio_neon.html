@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ name }} のポートフォリオ</title>
+    <link rel="stylesheet" href="/static/css/neon.css" />
+  </head>
+  <body>
+    <!-- ===== ヘッダー ===== -->
+    <header>
+      {% if icon_path %}
+      <img src="{{ icon_path }}" alt="{{ name }}のアイコン" class="profile-icon" />
+      {% endif %}
+      <h1>ネオンな{{ name }} のポートフォリオ</h1>
+      {% if title %}
+      <p><em>{{ title }}</em></p>
+      {% endif %}
+    </header>
+
+    <!-- ===== プロフィール ===== -->
+    <section>
+      <h2>プロフィール</h2>
+      <p><strong>所属:</strong> {{ university }} / {{ year }}</p>
+      <p><strong>卒業予定:</strong> {{ graduation_year }}年</p>
+      <p><strong>自己紹介:</strong> {{ self_intro }}</p>
+    </section>
+
+    <!-- ===== スキル ===== -->
+    <section>
+      <h2>スキル</h2>
+      <ul>
+        {% for s in skills %}
+        <li>{{ s.name }}： {{ "★" * s.level }}{{ "☆" * (5 - s.level) }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <!-- ===== 実績・資格 ===== -->
+    {% if achievements or certifications %}
+    <section>
+      <h2>実績・資格</h2>
+      {% if achievements %}
+      <p><strong>実績:</strong> {{ achievements }}</p>
+      {% endif %} {% if certifications %}
+      <p><strong>資格:</strong> {{ certifications }}</p>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- ===== 成果物 ===== -->
+    {% if projects or proj_links %}
+    <section>
+      <h2>成果物</h2>
+      {% if projects %}
+      <ul>
+        {% for p in projects %}
+        <li>{{ p }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% if proj_links %}
+      <p>リンク:</p>
+      <ul>
+        {% for link in proj_links %}
+        <li>
+          <a href="{{ link }}" target="_blank" rel="noopener noreferrer">
+            {{ link }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- ===== コンタクト ===== -->
+    {% if contact_email or sns_links or contact_github %}
+    <section>
+      <h2>コンタクト</h2>
+      <ul>
+        {% if contact_email %}
+        <li>📧 <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></li>
+        {% endif %} {% if sns_links %} {% for sns in sns_links %}
+        <li>
+          🔗
+          <a href="{{ sns }}" target="_blank" rel="noopener noreferrer">
+            {{ sns }}
+          </a>
+        </li>
+        {% endfor %} {% endif %} {% if contact_github %}
+        <li>
+          💻
+          <a
+            href="{{ contact_github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ contact_github }}
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </section>
+    {% endif %}
+  </body>
+</html>
