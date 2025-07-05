@@ -57,18 +57,16 @@
       {% if projects %}
       <ul>
         {% for p in projects %}
-        <li>{{ p }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% if proj_links %}
-      <p>リンク:</p>
-      <ul>
-        {% for link in proj_links %}
-        <li>
-          <a href="{{ link }}" target="_blank" rel="noopener noreferrer">
-            {{ link }}
-          </a>
-        </li>
+        <h3><strong>タイトル</strong></h3>
+        <p>{{ p.title }}</p>
+        <h3><strong>概要</strong></h3>
+        <p>{{ p.description }}</p>
+        <h3><strong>使用技術</strong></h3>
+        <p>{{ p.tech | join(" , ") }}</p>
+        {% if p.url %}
+          <h3><strong>リンク</strong></h3>
+          <p><a href="{{ p.url }}" target="_blank" rel="noopener noreferrer">{{ p.url }}</a></p>
+        {% endif %}
         {% endfor %}
       </ul>
       {% endif %}
