@@ -13,6 +13,7 @@ app = FastAPI()
 # 静的ファイルとテンプレートの設定
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
+maintemplates = Jinja2Templates(directory="docs")
 
 # アップロード用ディレクトリの作成
 UPLOAD_DIR = Path("app/static/uploads")
@@ -22,7 +23,7 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 # フォーム表示
 @app.get("/", response_class=HTMLResponse)
 async def form_page(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return maintemplates.TemplateResponse("index.html", {"request": request})
 
 
 # 生成結果表示
