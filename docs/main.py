@@ -11,12 +11,12 @@ from fastapi.templating import Jinja2Templates
 app = FastAPI()
 
 # 静的ファイルとテンプレートの設定
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
-templates = Jinja2Templates(directory="app/templates")
+app.mount("/static", StaticFiles(directory="docs/static"), name="static")
+templates = Jinja2Templates(directory="docs/templates")
 maintemplates = Jinja2Templates(directory="docs")
 
 # アップロード用ディレクトリの作成
-UPLOAD_DIR = Path("app/static/uploads")
+UPLOAD_DIR = Path("docs/static/uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 
