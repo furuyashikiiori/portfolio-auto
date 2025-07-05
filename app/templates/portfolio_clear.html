@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ name }} のクリエイティブポートフォリオ</title>
-    <link rel="stylesheet" href="/static/css/cler.css" />
+    <link rel="stylesheet" href="/static/css/clear.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -74,7 +74,9 @@
 
       <section class="card-section skills-section">
         <div class="section-header">
-          <h2 class="section-title"><i class="fas fa-laptop-code"></i> スキル</h2>
+          <h2 class="section-title">
+            <i class="fas fa-laptop-code"></i> スキル
+          </h2>
           <div class="section-underline"></div>
         </div>
         <div class="skills-grid">
@@ -83,7 +85,10 @@
             <div class="skill-name">{{ skill.name }}</div>
             <div class="skill-level">
               <div class="skill-bar">
-                <div class="skill-fill" data-width="{{ skill.level * 20 }}"></div>
+                <div
+                  class="skill-fill"
+                  data-width="{{ skill.level * 20 }}"
+                ></div>
               </div>
               <span class="skill-percentage">{{ skill.level }}/5</span>
             </div>
@@ -95,9 +100,7 @@
       {% if achievements or certifications %}
       <section class="card-section achievements-section">
         <div class="section-header">
-          <h2 class="section-title">
-            <i class="fas fa-award"></i> 実績・資格
-          </h2>
+          <h2 class="section-title"><i class="fas fa-award"></i> 実績・資格</h2>
           <div class="section-underline"></div>
         </div>
         <div class="achievements-grid">
@@ -122,14 +125,10 @@
           {% endif %}
         </div>
       </section>
-      {% endif %}
-
-      {% if projects %}
+      {% endif %} {% if projects %}
       <section class="card-section projects-section">
         <div class="section-header">
-          <h2 class="section-title">
-            <i class="fas fa-cube"></i> 制作物
-          </h2>
+          <h2 class="section-title"><i class="fas fa-cube"></i> 制作物</h2>
           <div class="section-underline"></div>
         </div>
         <div class="projects-grid">
@@ -150,8 +149,7 @@
                   {% endfor %}
                 </div>
               </div>
-              {% endif %}
-              {% if project.url %}
+              {% endif %} {% if project.url %}
               <div class="project-link-container">
                 <a
                   href="{{ project.url }}"
@@ -169,9 +167,7 @@
           {% endfor %}
         </div>
       </section>
-      {% endif %}
-
-      {% if contact_email or sns_links or contact_github %}
+      {% endif %} {% if contact_email or sns_links or contact_github %}
       <section class="card-section contact-section">
         <div class="section-header">
           <h2 class="section-title">
@@ -222,38 +218,44 @@
 
     <script>
       // スキルバーのアニメーション
-      document.addEventListener('DOMContentLoaded', function() {
-        const skillFills = document.querySelectorAll('.skill-fill');
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const skillFill = entry.target;
-              const width = skillFill.getAttribute('data-width');
-              skillFill.style.width = width + '%';
-            } else {
-              // スクロールアウトしたらリセット (任意)
-              // skillFill.style.width = '0%'; 
-            }
-          });
-        }, { threshold: 0.5 });
-        
-        skillFills.forEach(fill => {
-          fill.style.width = '0%'; // 初期状態を0に
+      document.addEventListener("DOMContentLoaded", function () {
+        const skillFills = document.querySelectorAll(".skill-fill");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const skillFill = entry.target;
+                const width = skillFill.getAttribute("data-width");
+                skillFill.style.width = width + "%";
+              } else {
+                // スクロールアウトしたらリセット (任意)
+                // skillFill.style.width = '0%';
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        skillFills.forEach((fill) => {
+          fill.style.width = "0%"; // 初期状態を0に
           observer.observe(fill);
         });
 
         // フェードインアニメーション
-        const sections = document.querySelectorAll('.card-section');
-        const sectionObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            }
-          });
-        }, { threshold: 0.1 });
+        const sections = document.querySelectorAll(".card-section");
+        const sectionObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
 
-        sections.forEach(section => {
+        sections.forEach((section) => {
           sectionObserver.observe(section);
         });
       });
