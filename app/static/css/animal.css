@@ -1,0 +1,401 @@
+/* 動物をモチーフとした可愛い系ポートフォリオ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+  min-height: 100vh;
+  color: #2d3436;
+  line-height: 1.6;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.animal-decoration {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.animal-ears {
+  width: 30px;
+  height: 30px;
+  background: #fdcb6e;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 3px solid #e17055;
+  transform: rotate(45deg);
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.animal-ears:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(45deg); }
+  50% { transform: rotate(35deg); }
+}
+
+.profile-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid #fdcb6e;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.title-badge {
+  background: #fdcb6e;
+  color: #2d3436;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.paw-prints {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+.paw {
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: paw-fade 3s ease-in-out infinite;
+}
+
+.paw:nth-child(2) { animation-delay: 0.5s; }
+.paw:nth-child(3) { animation-delay: 1s; }
+
+@keyframes paw-fade {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* ===== セクション共通スタイル ===== */
+section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #e17055, #d63031);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== プロフィール ===== */
+.profile-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 3px solid #e17055;
+}
+
+.info-card p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.info-card strong {
+  color: #2d3436;
+}
+
+/* ===== スキル ===== */
+.skills-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.skill-level {
+  font-size: 1.5rem;
+}
+
+.star.filled {
+  color: #fdcb6e;
+  text-shadow: 0 0 10px rgba(253, 203, 110, 0.8);
+}
+
+.star.empty {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== 実績・資格 ===== */
+.achievements-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.achievement-card {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-item {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.achievement-item:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== 制作物 ===== */
+.projects-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: linear-gradient(135deg, #55efc4, #00b894);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.project-info p {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.project-info a {
+  color: #fdcb6e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.project-info a:hover {
+  text-decoration: underline;
+}
+
+/* ===== コンタクト ===== */
+.contact-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-item {
+  background: linear-gradient(135deg, #ff7675, #d63031);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  min-width: 2rem;
+}
+
+.contact-item a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* ===== フッター ===== */
+footer {
+  background: linear-gradient(135deg, #636e72, #2d3436);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-animals {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-animals span {
+  display: inline-block;
+  margin: 0 0.5rem;
+  animation: animal-dance 2s ease-in-out infinite;
+}
+
+.footer-animals span:nth-child(2) { animation-delay: 0.2s; }
+.footer-animals span:nth-child(3) { animation-delay: 0.4s; }
+.footer-animals span:nth-child(4) { animation-delay: 0.6s; }
+.footer-animals span:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes animal-dance {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(5deg); }
+  75% { transform: translateY(-5px) rotate(-5deg); }
+}
+
+/* ===== レスポンシブデザイン ===== */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .skills-grid,
+  .projects-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .animal-ears {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .profile-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1.5rem 1rem;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  section {
+    padding: 0 0.5rem;
+  }
+  
+  .profile-section,
+  .skills-section,
+  .achievements-section,
+  .projects-section,
+  .contact-section {
+    padding: 1.5rem;
+  }
+}

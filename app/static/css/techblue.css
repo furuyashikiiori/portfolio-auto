@@ -1,0 +1,213 @@
+/*──────────────────────────────────────────────
+  TechBlue — ドスパラ風ポートフォリオテーマ
+  White Header × Cobalt & Cyan Accent
+──────────────────────────────────────────────*/
+
+/* ===== カラーバリアブル ===== */
+:root {
+  --tb-dark-blue:  #004a9f;   /* ロゴ文字などに使用 */
+  --tb-blue:       #0071ce;   /* アクセント青 */
+  --tb-light-blue: #00aeef;   /* ハイライト水色 */
+  --tb-gray:       #f5f7fa;   /* ライトグレー（チップ背景など） */
+  --tb-bg:         #ebf7fc;   /* ページ全体の淡いシアン */
+  --tb-text:       #333;      /* 基本文字色 */
+}
+
+/* ===== ベーススタイル ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  background: var(--tb-bg);
+  color: var(--tb-text);
+  line-height: 1.6;
+}
+
+/*──────────────── Header ────────────────*/
+.tb-header {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  background: #fff;
+  color: var(--tb-dark-blue);
+  border-bottom: 3px solid var(--tb-blue);
+}
+
+.tb-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--tb-blue);
+  user-select: none;
+}
+
+.tb-logo span {
+  color: var(--tb-light-blue);
+}
+
+.tb-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--tb-blue);
+}
+
+.tb-title h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--tb-dark-blue);
+}
+
+.tb-sub {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--tb-blue);
+}
+
+/*──────────────── Sections (card style) ────────────────*/
+.tb-section {
+  max-width: 960px;
+  margin: 1.8rem auto;
+  padding: 2rem 2.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.tb-section h2 {
+  margin-top: 0;
+  color: var(--tb-dark-blue);
+  border-left: 4px solid var(--tb-blue);
+  padding-left: 0.5rem;
+}
+
+/*──────────────── Skill List ────────────────*/
+.tb-skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.tb-skill-list li {
+  background: var(--tb-gray);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.tb-skill-name {
+  font-weight: 600;
+}
+
+.tb-stars {
+  color: var(--tb-light-blue);
+  font-size: 0.9rem;
+}
+
+/*──────────────── Project Cards ────────────────*/
+.tb-project-card {
+  background: #fafbfc;
+  border: 1px solid #e1e5ea;
+  border-left: 4px solid var(--tb-blue);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tb-project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tb-project-card h3 {
+  margin-top: 0;
+  color: var(--tb-blue);
+}
+
+.tb-tag-line {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+/*──────────────── View-Project ボタン ────────────────*/
+.tb-link {
+  position: relative;          /* オーバーレイ配置の基準 */
+  display: inline-block;
+  margin-top: 0.4rem;
+  background: var(--tb-blue);  /* 通常色（青） */
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  overflow: hidden;            /* オーバーレイのはみ出しを隠す */
+  z-index: 0;
+}
+
+/* オーバーレイ本体（JS で挿入） */
+.tb-link-overlay {
+  position: absolute;
+  inset: 0;                             /* 全面を覆う */
+  background: var(--tb-light-blue);     /* ホバー後に見える水色 */
+  transform-origin: left;
+  transform: scaleX(0);                 /* 初期は幅ゼロ */
+  transition: transform 0.5s ease;      /* 0.5 秒で伸縮 */
+  z-index: -1;                          /* テキスト背面へ */
+}
+
+/*──────────────── Contact ────────────────*/
+.tb-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.tb-contact-list a {
+  color: var(--tb-blue);
+  text-decoration: none;
+}
+
+.tb-contact-list a:hover {
+  text-decoration: underline;
+}
+
+/*──────────────── Footer ────────────────*/
+.tb-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/*──────────────── Responsive tweaks ────────────────*/
+@media (max-width: 640px) {
+  .tb-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tb-icon {
+    margin-left: 0;
+  }
+  .tb-section {
+    padding: 1.25rem 1.5rem;
+  }
+}

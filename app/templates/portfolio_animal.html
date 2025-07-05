@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ name }} のポートフォリオ</title>
+    <link rel="stylesheet" href="/static/css/animal.css" />
+  </head>
+  <body>
+    <!-- ===== ヘッダー ===== -->
+    <header>
+      <div class="animal-decoration">
+        <div class="animal-ears"></div>
+        <div class="animal-ears"></div>
+      </div>
+      {% if icon_path %}
+      <img
+        src="{{ icon_path }}"
+        alt="{{ name }}のアイコン"
+        class="profile-icon"
+      />
+      {% endif %}
+      <h1>🐾 {{ name }} のポートフォリオ 🐾</h1>
+      {% if title %}
+      <p class="title-badge"><em>{{ title }}</em></p>
+      {% endif %}
+      <div class="paw-prints">
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+      </div>
+    </header>
+
+    <!-- ===== プロフィール ===== -->
+    <section class="profile-section">
+      <h2>🐱 プロフィール</h2>
+      <div class="info-card">
+        <p><strong>🏫 所属:</strong> {{ university }} / {{ year }}</p>
+        <p><strong>🎓 卒業予定:</strong> {{ graduation_year }}年</p>
+        <p><strong>🗣️ 自己紹介:</strong> {{ self_intro }}</p>
+      </div>
+    </section>
+
+    <!-- ===== スキル ===== -->
+    <section class="skills-section">
+      <h2>🦊 スキル</h2>
+      <div class="skills-grid">
+        {% for s in skills %}
+        <div class="skill-card">
+          <div class="skill-name">{{ s.name }}</div>
+          <div class="skill-level">
+            {% for i in range(s.level) %}
+            <span class="star filled">⭐</span>
+            {% endfor %} {% for i in range(5 - s.level) %}
+            <span class="star empty">☆</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ===== 実績・資格 ===== -->
+    {% if achievements or certifications %}
+    <section class="achievements-section">
+      <h2>🏆 実績・資格</h2>
+      <div class="achievement-card">
+        {% if achievements %}
+        <div class="achievement-item">
+          <strong>🎯 実績:</strong> {{ achievements }}
+        </div>
+        {% endif %} {% if certifications %}
+        <div class="achievement-item">
+          <strong>📜 資格:</strong> {{ certifications }}
+        </div>
+        {% endif %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== 制作物 ===== -->
+    {% if projects %}
+    <section class="projects-section">
+      <h2>🐰 制作物</h2>
+      <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card">
+          <h3>{{ project.title }}</h3>
+          <div class="project-info">
+            <p><strong>📝 概要:</strong> {{ project.description }}</p>
+            {% if project.tech %}
+            <p>
+              <strong>🔧 技術スタック:</strong> {{ project.tech|join(', ') }}
+            </p>
+            {% endif %} {% if project.url %}
+            <p>
+              <strong>🔗 URL:</strong>
+              <a
+                href="{{ project.url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ project.url }}</a
+              >
+            </p>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== コンタクト ===== -->
+    {% if contact_email or sns_links or contact_github %}
+    <section class="contact-section">
+      <h2>🐼 コンタクト</h2>
+      <div class="contact-grid">
+        {% if contact_email %}
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>
+        </div>
+        {% endif %} {% if sns_links %} {% for sns in sns_links %}
+        <div class="contact-item">
+          <span class="contact-icon">🔗</span>
+          <a href="{{ sns }}" target="_blank" rel="noopener noreferrer"
+            >{{ sns }}</a
+          >
+        </div>
+        {% endfor %} {% endif %} {% if contact_github %}
+        <div class="contact-item">
+          <span class="contact-icon">💻</span>
+          <a
+            href="{{ contact_github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ contact_github }}</a
+          >
+        </div>
+        {% endif %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== フッター ===== -->
+    <footer>
+      <div class="footer-animals">
+        <span>🐶</span>
+        <span>🐱</span>
+        <span>🐰</span>
+        <span>🦊</span>
+        <span>🐼</span>
+      </div>
+      <p>Made with by {{ name }}</p>
+    </footer>
+  </body>
+</html>
