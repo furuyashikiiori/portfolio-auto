@@ -1,3 +1,5 @@
+7月に行われたMUDS学内ハッカソンの制作物
+
 # Portfolio Auto Generator
 
 ポートフォリオを自動生成する Web アプリケーションです。
