@@ -44,7 +44,7 @@ pip install -r requirements.txt
 ### 4. アプリケーションの起動
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn docs.main:app --reload
 ```
 
 ### 5. ブラウザでアクセス
