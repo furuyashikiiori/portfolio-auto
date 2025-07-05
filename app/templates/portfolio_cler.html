@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ name }} のクリエイティブポートフォリオ</title>
+    <link rel="stylesheet" href="/static/css/cler.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="background-animation"></div>
+
+    <div class="container">
+      <header class="hero-section">
+        <div class="hero-backdrop"></div>
+        <div class="hero-content">
+          {% if icon_path %}
+          <div class="profile-image-wrapper">
+            <img
+              src="{{ icon_path }}"
+              alt="{{ name }}のアイコン"
+              class="profile-icon-image"
+            />
+          </div>
+          {% endif %}
+          <h1 class="hero-title">{{ name }}</h1>
+          {% if title %}
+          <p class="hero-subtitle">{{ title }}</p>
+          {% endif %}
+          <div class="hero-divider"></div>
+        </div>
+      </header>
+
+      <section class="card-section profile-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-user-circle"></i> プロフィール
+          </h2>
+          <div class="section-underline"></div>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-item glass-card">
+            <div class="profile-icon"><i class="fas fa-school"></i></div>
+            <div class="profile-content">
+              <h3>所属</h3>
+              <p>{{ university }} / {{ year }}</p>
+            </div>
+          </div>
+          <div class="profile-item glass-card">
+            <div class="profile-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="profile-content">
+              <h3>卒業予定</h3>
+              <p>{{ graduation_year }}年</p>
+            </div>
+          </div>
+          <div class="profile-item full-width glass-card">
+            <div class="profile-icon"><i class="fas fa-info-circle"></i></div>
+            <div class="profile-content">
+              <h3>自己紹介</h3>
+              <p>{{ self_intro }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-section skills-section">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-laptop-code"></i> スキル</h2>
+          <div class="section-underline"></div>
+        </div>
+        <div class="skills-grid">
+          {% for skill in skills %}
+          <div class="skill-item glass-card">
+            <div class="skill-name">{{ skill.name }}</div>
+            <div class="skill-level">
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="{{ skill.level * 20 }}"></div>
+              </div>
+              <span class="skill-percentage">{{ skill.level }}/5</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      {% if achievements or certifications %}
+      <section class="card-section achievements-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-award"></i> 実績・資格
+          </h2>
+          <div class="section-underline"></div>
+        </div>
+        <div class="achievements-grid">
+          {% if achievements %}
+          <div class="achievement-item glass-card">
+            <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+            <div class="achievement-content">
+              <h3>実績</h3>
+              <p>{{ achievements }}</p>
+            </div>
+          </div>
+          {% endif %} {% if certifications %}
+          <div class="achievement-item glass-card">
+            <div class="achievement-icon">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="achievement-content">
+              <h3>資格</h3>
+              <p>{{ certifications }}</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if projects %}
+      <section class="card-section projects-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-cube"></i> 制作物
+          </h2>
+          <div class="section-underline"></div>
+        </div>
+        <div class="projects-grid">
+          {% for project in projects %}
+          <div class="project-card glass-card">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-code-branch"></i></div>
+              <h3 class="project-title">{{ project.title }}</h3>
+            </div>
+            <div class="project-content">
+              <p class="project-description">{{ project.description }}</p>
+              {% if project.tech %}
+              <div class="project-tech">
+                <strong>技術スタック:</strong>
+                <div class="tech-tags">
+                  {% for tech in project.tech %}
+                  <span class="tech-tag">{{ tech }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+              {% if project.url %}
+              <div class="project-link-container">
+                <a
+                  href="{{ project.url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                  プロジェクトを見る
+                </a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if contact_email or sns_links or contact_github %}
+      <section class="card-section contact-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-paper-plane"></i> コンタクト
+          </h2>
+          <div class="section-underline"></div>
+        </div>
+        <div class="contact-grid">
+          {% if contact_email %}
+          <a href="mailto:{{ contact_email }}" class="contact-item glass-card">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-content">
+              <h3>Email</h3>
+              <p>{{ contact_email }}</p>
+            </div>
+          </a>
+          {% endif %} {% if contact_github %}
+          <a
+            href="{{ contact_github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item glass-card"
+          >
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div class="contact-content">
+              <h3>GitHub</h3>
+              <p>{{ contact_github }}</p>
+            </div>
+          </a>
+          {% endif %} {% if sns_links %} {% for sns in sns_links %}
+          <a
+            href="{{ sns }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item glass-card"
+          >
+            <div class="contact-icon"><i class="fas fa-link"></i></div>
+            <div class="contact-content">
+              <h3>SNS</h3>
+              <p>{{ sns }}</p>
+            </div>
+          </a>
+          {% endfor %} {% endif %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+
+    <script>
+      // スキルバーのアニメーション
+      document.addEventListener('DOMContentLoaded', function() {
+        const skillFills = document.querySelectorAll('.skill-fill');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const skillFill = entry.target;
+              const width = skillFill.getAttribute('data-width');
+              skillFill.style.width = width + '%';
+            } else {
+              // スクロールアウトしたらリセット (任意)
+              // skillFill.style.width = '0%'; 
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        skillFills.forEach(fill => {
+          fill.style.width = '0%'; // 初期状態を0に
+          observer.observe(fill);
+        });
+
+        // フェードインアニメーション
+        const sections = document.querySelectorAll('.card-section');
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+          sectionObserver.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>
