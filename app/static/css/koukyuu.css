@@ -1,28 +1,54 @@
 /* ===== ベーススタイル ===== */
 body {
+    font-family: "Noto Serif JP", "Georgia", serif;
     background: linear-gradient(135deg, #12151c 0%, #282c36 100%);
     color: #ececec;
-    font-family: 'Noto Serif JP', 'Georgia', serif;
     letter-spacing: 0.01em;
+    line-height: 1.88;
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
 
+/* ===== コンテナ（必要に応じて適用） ===== */
+body>* {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2rem 1rem;
+    background: none;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+
 /* ===== ヘッダー ===== */
 header {
+    text-align: center;
     margin-top: 1.5rem;
     margin-bottom: 1.75rem;
-    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #3f3c29;
+}
+
+.profile-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid transparent;
+    background:
+        linear-gradient(#231F14, #433C24) padding-box,
+        linear-gradient(120deg, #fffbe4, #bfa046 60%, #fff6d7) border-box;
+    box-shadow: 0 0 16px #fffbe470, 0 6px 22px #bfa04655;
 }
 
 header h1 {
-    font-size: 2.7em;
+    font-size: 2.7rem;
     margin-top: 1.5rem;
     margin-bottom: 0.625rem;
-    letter-spacing: 0.12em;
-    font-family: 'Georgia', 'Noto Serif JP', serif;
     font-weight: 700;
+    letter-spacing: 0.12em;
+    font-family: "Georgia", "Noto Serif JP", serif;
     background: linear-gradient(90deg, #ffe564 10%, #bc9c48 55%, #fff6d7 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -59,24 +85,26 @@ header em {
 
 /* ===== セクション ===== */
 section {
-    margin: 2.5rem auto 0 auto;
-    max-width: 900px;
+    margin-top: 2.5rem;
     padding: 0 10px;
 }
 
 section h2 {
+    font-size: 2rem;
     color: #f9e8c9;
     text-align: center;
     margin: 3.75rem 0 1.125rem 0;
     letter-spacing: 0.09em;
-    font-size: 2em;
     position: relative;
-    padding-bottom: 0.6em;
-    font-family: 'Georgia', 'Noto Serif JP', serif;
+    padding: 1rem 1.5rem 0.6em 1.5rem;
+    font-family: "Georgia", "Noto Serif JP", serif;
+    border-left: 8px solid #bfa046;
+    background: rgba(38, 38, 38, 0.18);
+    border-radius: 12px;
 }
 
 section h2::after {
-    content: '';
+    content: "";
     display: block;
     margin: 0 auto;
     margin-top: 8px;
@@ -87,7 +115,7 @@ section h2::after {
     opacity: 0.85;
 }
 
-/* ===== セクション内説明文（プロフィールなど） ===== */
+/* ===== セクション内 説明文/段落 ===== */
 section>p {
     max-width: 660px;
     margin: 1.125rem auto 0.75rem auto;
@@ -97,9 +125,8 @@ section>p {
     border-radius: 14px;
     box-shadow: 0 2px 18px rgba(60, 60, 60, 0.16);
     color: #e9e0ce;
-    font-size: 1.09em;
-    line-height: 1.88em;
-    font-family: 'Noto Serif JP', 'Georgia', serif;
+    font-size: 1.09rem;
+    font-family: "Noto Serif JP", "Georgia", serif;
 }
 
 section>p strong {
@@ -110,8 +137,8 @@ section>p strong {
 
 /* ===== リスト ===== */
 ul {
+    padding-left: 0;
     list-style: none;
-    padding: 0;
     max-width: 570px;
     margin: 0 auto 2.375rem auto;
     text-align: center;
@@ -126,7 +153,7 @@ li {
     box-shadow: 0 3px 22px rgba(191, 160, 70, 0.11);
     color: #ffeccd;
     font-weight: 700;
-    font-size: 1.11em;
+    font-size: 1.11rem;
     letter-spacing: 0.04em;
     border-left: 4px solid #bfa046;
     border-right: 4px solid #3d3120;
@@ -145,29 +172,25 @@ li:hover {
     transform: translateY(-2px) scale(1.03);
 }
 
-/* ===== リンク ===== */
-a {
+li a {
+    font-weight: 600;
+    font-size: 1.02em;
+    letter-spacing: 0.03em;
     color: #d6bd4d;
     text-decoration: underline;
     transition: color 0.2s;
     word-break: break-all;
 }
 
-a:hover,
-a:focus {
+li a:hover,
+li a:focus {
     color: #fff6d7;
     text-decoration: none;
     background: #bfa04699;
     border-radius: 6px;
 }
 
-li a {
-    font-weight: 600;
-    font-size: 1.02em;
-    letter-spacing: 0.03em;
-}
-
-/* ===== アイコン付きリスト ===== */
+/* ===== コンタクト用アイコン付きリスト ===== */
 li::before {
     display: none;
 }
@@ -210,7 +233,7 @@ ul li:has(a[href*="instagram.com"])::before {
 
 /* ===== スキルの星装飾 ===== */
 section ul li {
-    font-size: 1.13em;
+    font-size: 1.13rem;
 }
 
 section ul li:has(span.star) {
@@ -231,6 +254,11 @@ section+section {
 
 /* ===== レスポンシブ対応 ===== */
 @media (max-width: 600px) {
+    body>* {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
     header h1 {
         font-size: 1.47em;
     }
