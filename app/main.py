@@ -22,7 +22,7 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 # フォーム表示
 @app.get("/", response_class=HTMLResponse)
 async def form_page(request: Request):
-    return templates.TemplateResponse("form.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 # 生成結果表示
